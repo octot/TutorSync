@@ -1,0 +1,119 @@
+/* Dialog title */
+.dialog-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Optional subtitle if you add one later */
+.dialog-subtitle {
+    margin: 4px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Content area */
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 8px;
+}
+
+
+
+.message-card {
+    margin-bottom: 0px;
+}
+
+.message-card mat-card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Message preview block */
+.message-preview {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    background: #f7f7f7;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 0;
+}
+
+/* Card action row */
+.message-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Dialog footer buttons */
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 12px;
+}
+
+/* Send button sizing */
+.send-button {
+    min-width: 180px;
+}
+
+/* ------------------------------
+   Tablet
+--------------------------------- */
+@media (max-width: 992px) {
+    .dialog-title {
+        font-size: 22px;
+    }
+}
+
+/* ------------------------------
+   Mobile
+--------------------------------- */
+@media (max-width: 768px) {
+    .dialog-title {
+        font-size: 20px;
+    }
+
+    .dialog-content {
+        gap: 12px;
+    }
+
+    .message-card mat-card-title {
+        font-size: 16px;
+    }
+
+    .message-preview {
+        font-size: 13px;
+        padding: 12px;
+    }
+
+    .dialog-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dialog-actions button {
+        width: 100%;
+    }
+
+    .send-button {
+        min-width: unset;
+    }
+
+    .message-actions {
+        justify-content: stretch;
+    }
+
+    .message-actions button {
+        width: 100%;
+    }
+}

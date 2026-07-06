@@ -1,0 +1,178 @@
+<form [formGroup]="form" (ngSubmit)="generateMessages()" class="form-container">
+
+  <h1>Message Generation</h1>
+  <p class="subtitle">
+    Generate tutor and parent WhatsApp messages.
+  </p>
+
+  <!-- Tuition & Contacts -->
+  <mat-card class="section-card">
+
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>school</mat-icon>
+        Tuition & Contacts
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="grid-3">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tuition ID</mat-label>
+          <input matInput formControlName="tuitionId">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tutor Name</mat-label>
+          <input matInput formControlName="tutorName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tutor Number</mat-label>
+          <input matInput formControlName="tutorNumber">
+        </mat-form-field>
+
+      </div>
+
+      <div class="grid-2">
+
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>Parent Name</mat-label>
+          <input matInput formControlName="parentName">
+        </mat-form-field> -->
+
+        <mat-form-field appearance="outline">
+          <mat-label>Parent Number</mat-label>
+          <input matInput formControlName="parentNumber">
+        </mat-form-field>
+
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
+  <!-- Schedule -->
+  <mat-card class="section-card">
+
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>schedule</mat-icon>
+        Schedule
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content formGroupName="schedule">
+
+      <div class="grid-3">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Start Time</mat-label>
+          <input matInput type="time" formControlName="startTime">
+          <mat-hint>Example: 09:00</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>End Time</mat-label>
+          <input matInput type="time" formControlName="endTime">
+          <mat-hint>Example: 09:30</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Time Zone</mat-label>
+          <mat-select formControlName="timeZone">
+            @for (zone of timeZones; track zone.value) {
+            <mat-option [value]="zone.value">
+              {{ zone.label }}
+            </mat-option>
+            }
+          </mat-select>
+
+        </mat-form-field>
+
+
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
+  <!-- Payment -->
+  <mat-card class="section-card">
+
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>payments</mat-icon>
+        Payment Details
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="grid-2">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Payment From Parent</mat-label>
+          <input matInput type="number" formControlName="paymentFromParent">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Payment To Tutor</mat-label>
+          <input matInput type="number" formControlName="paymentToTutor">
+        </mat-form-field>
+
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
+  <!-- Additional Messages -->
+  <mat-card class="section-card">
+
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>chat</mat-icon>
+        Additional Messages
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <mat-form-field appearance="outline" class="full-width">
+
+        <mat-label>Message To Tutor</mat-label>
+
+        <textarea matInput rows="4" formControlName="additionalMessageToTutor">
+        </textarea>
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+
+        <mat-label>Message To Parent</mat-label>
+
+        <textarea matInput rows="4" formControlName="additionalMessageToParent">
+        </textarea>
+
+      </mat-form-field>
+
+    </mat-card-content>
+
+  </mat-card>
+
+  <div class="actions">
+
+    <button type="submit" mat-raised-button color="primary">
+
+      <mat-icon>auto_awesome</mat-icon>
+
+      Generate Messages
+
+    </button>
+
+  </div>
+
+</form>
