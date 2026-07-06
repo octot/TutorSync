@@ -1,11 +1,11 @@
-package com.smarthr.smarthr.message.service;
+package com.TutorSync.TutorSync.message.service;
 
-import com.smarthr.smarthr.message.dto.GeneratedMessage;
-import com.smarthr.smarthr.message.dto.MessageRequest;
-import com.smarthr.smarthr.message.dto.MessageResponse;
-import com.smarthr.smarthr.message.dto.SendMessageRequest;
-import com.smarthr.smarthr.message.generator.ParentMessageGenerator;
-import com.smarthr.smarthr.message.generator.TutorMessageGenerator;
+import com.TutorSync.TutorSync.message.dto.GeneratedMessage;
+import com.TutorSync.TutorSync.message.dto.MessageRequest;
+import com.TutorSync.TutorSync.message.dto.MessageResponse;
+import com.TutorSync.TutorSync.message.dto.SendMessageRequest;
+import com.TutorSync.TutorSync.message.generator.ParentMessageGenerator;
+import com.TutorSync.TutorSync.message.generator.TutorMessageGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

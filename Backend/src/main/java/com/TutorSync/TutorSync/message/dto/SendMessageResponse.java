@@ -1,4 +1,4 @@
-package com.smarthr.smarthr.message.dto;
+package com.TutorSync.TutorSync.message.dto;
 
 
 import lombok.Builder;

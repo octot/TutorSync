@@ -1,4 +1,4 @@
-package com.smarthr.smarthr.config;
+package com.TutorSync.TutorSync.config;
 
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

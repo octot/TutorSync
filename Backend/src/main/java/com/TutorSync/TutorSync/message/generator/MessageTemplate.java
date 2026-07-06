@@ -1,7 +1,7 @@
-package com.smarthr.smarthr.message.generator;
+package com.TutorSync.TutorSync.message.generator;
 
-import com.smarthr.smarthr.message.dto.GeneratedMessage;
-import com.smarthr.smarthr.message.dto.MessageRequest;
+import com.TutorSync.TutorSync.message.dto.GeneratedMessage;
+import com.TutorSync.TutorSync.message.dto.MessageRequest;
 
 public interface MessageTemplate {
     GeneratedMessage generate(MessageRequest request);

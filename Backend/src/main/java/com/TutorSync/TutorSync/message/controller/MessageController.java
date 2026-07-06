@@ -1,10 +1,10 @@
-package com.smarthr.smarthr.message.controller;
+package com.TutorSync.TutorSync.message.controller;
 
-import com.smarthr.smarthr.message.dto.MessageRequest;
-import com.smarthr.smarthr.message.dto.MessageResponse;
-import com.smarthr.smarthr.message.dto.SendMessageRequest;
-import com.smarthr.smarthr.message.dto.SendMessageResponse;
-import com.smarthr.smarthr.message.service.MessageService;
+import com.TutorSync.TutorSync.message.dto.MessageRequest;
+import com.TutorSync.TutorSync.message.dto.MessageResponse;
+import com.TutorSync.TutorSync.message.dto.SendMessageRequest;
+import com.TutorSync.TutorSync.message.dto.SendMessageResponse;
+import com.TutorSync.TutorSync.message.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,9 +1,9 @@
-package com.smarthr.smarthr.message.service.impl;
+package com.TutorSync.TutorSync.message.service.impl;
 
-import com.smarthr.smarthr.config.TwilioProperties;
-import com.smarthr.smarthr.message.dto.GeneratedMessage;
-import com.smarthr.smarthr.message.dto.RecipientType;
-import com.smarthr.smarthr.message.service.WhatsappService;
+import com.TutorSync.TutorSync.config.TwilioProperties;
+import com.TutorSync.TutorSync.message.dto.GeneratedMessage;
+import com.TutorSync.TutorSync.message.dto.RecipientType;
+import com.TutorSync.TutorSync.message.service.WhatsappService;
 import com.twilio.Twilio;
 import com.twilio.exception.TwilioException;
 import com.twilio.rest.api.v2010.account.Message;

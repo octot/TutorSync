@@ -1,4 +1,4 @@
-package com.smarthr.smarthr.client;
+package com.TutorSync.TutorSync.client;
 
 public class WhatsAppClient {
 }

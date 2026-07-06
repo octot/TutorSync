@@ -1,6 +1,6 @@
-package com.smarthr.smarthr.message.service;
+package com.TutorSync.TutorSync.message.service;
 
-import com.smarthr.smarthr.message.dto.GeneratedMessage;
+import com.TutorSync.TutorSync.message.dto.GeneratedMessage;
 
 import java.util.List;
 

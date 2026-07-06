@@ -1,9 +1,9 @@
-package com.smarthr.smarthr.message.generator;
+package com.TutorSync.TutorSync.message.generator;
 
 
-import com.smarthr.smarthr.message.dto.GeneratedMessage;
-import com.smarthr.smarthr.message.dto.MessageRequest;
-import com.smarthr.smarthr.message.dto.RecipientType;
+import com.TutorSync.TutorSync.message.dto.GeneratedMessage;
+import com.TutorSync.TutorSync.message.dto.MessageRequest;
+import com.TutorSync.TutorSync.message.dto.RecipientType;
 import org.springframework.stereotype.Component;
 
 @Component
