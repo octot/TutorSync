@@ -5,8 +5,46 @@
     Generate tutor and parent WhatsApp messages.
   </p>
 
+
+  <mat-card class="section-card">
+
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>manage_search</mat-icon>
+        Load Existing Tuition
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="grid-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Search by Tuition ID</mat-label>
+          <input matInput [(ngModel)]="lookupTuitionId" [ngModelOptions]="{ standalone: true }"
+            placeholder="Enter tuition ID to load">
+        </mat-form-field>
+        <div class="lookup-action">
+          <button type="button" mat-stroked-button (click)="loadTuition()">
+            <mat-icon>search</mat-icon>
+            Load Tuition
+          </button>
+        </div>
+        <!--         
+        <div class="lookup-status">
+          @if (isEditMode) {
+          <p class="status-text success">Loaded existing tuition</p>
+          } @else {
+          <p class="status-text muted">Create mode — no tuition loaded</p>
+          }
+        </div> -->
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
   <!-- Tuition & Contacts -->
   <mat-card class="section-card">
+
+
+
 
     <mat-card-header>
       <mat-card-title>
