@@ -1,1 +1,49 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container class="app-container">
+
+    <mat-sidenav #sidenav mode="over" class="app-sidenav">
+        <div class="sidenav-header">
+            <h2>TutorSync</h2>
+        </div>
+
+        <nav class="sidenav-nav">
+            
+            <button mat-button class="nav-item"   routerLink="/" (click)="sidenav.close()">
+
+                <mat-icon>description</mat-icon>
+
+                <span>Tuition Form</span>
+
+            </button>
+            <button mat-button class="nav-item" routerLink="/activity-history" (click)="sidenav.close()">
+
+                <mat-icon>history</mat-icon>
+                <span>Activity History</span>
+
+            </button>
+        </nav>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <mat-toolbar class="app-toolbar">
+
+            <button mat-icon-button aria-label="Open navigation menu" (click)="sidenav.toggle()">
+
+                <mat-icon>menu</mat-icon>
+
+            </button>
+
+            <span class="app-title">
+                TutorSync
+            </span>
+
+        </mat-toolbar>
+
+        <main class="page-content">
+            <router-outlet></router-outlet>
+        </main>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

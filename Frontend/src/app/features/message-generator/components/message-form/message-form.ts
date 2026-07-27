@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { GeneratedMessage } from '../../../../../shared/models/generated-message.model';
+import { TuitionService } from '../../../../../core/services/TuitionService';
 import { MessageService } from '../../../../../core/services/message.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ReviewDialogComponent } from '../review-dialog/review-dialog';
@@ -45,6 +46,7 @@ export class MessageForm {
   private readonly dialog = inject(MatDialog);
 
   constructor(
+    private tuitionService: TuitionService,
     private messageService: MessageService
   ) { }
 
@@ -95,7 +97,7 @@ export class MessageForm {
     if (!tuitionId) {
       return;
     }
-    this.messageService.getTuitionByTuitionId(tuitionId)
+    this.tuitionService.getTuitionByTuitionId(tuitionId)
       .subscribe(record => {
         this.form.patchValue({
           tuitionId: record.tuitionId,
@@ -107,9 +109,9 @@ export class MessageForm {
           additionalMessageToTutor: record.additionalMessageToTutor,
           additionalMessageToParent: record.additionalMessageToParent,
           schedule: {
-            startTime: record.startTime,
-            endTime: record.endTime,
-            timeZone: record.timeZone
+            startTime: record.schedule.startTime,
+            endTime: record.schedule.endTime,
+            timeZone: record.schedule.timeZone
           }
         });
         this.setLoadedTuitionState(record.id);

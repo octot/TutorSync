@@ -41,9 +41,7 @@ public class MessageService {
     }
 
     public void sendToAdmin(SendMessageRequest request) {
-
         whatsappService.sendToAdmin(request.getMessages());
-
     }
 
 }

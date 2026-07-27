@@ -1,0 +1,55 @@
+@if (fieldChanges.length > 0) {
+
+<h4 class="changes-heading">
+    Updated Fields
+</h4>
+
+<div class="activity-changes">
+
+    @for (change of fieldChanges; track change.field) {
+
+    <div class="change-item">
+
+        <div class="change-title">
+            {{ change.field }}
+        </div>
+
+        <div class="change-table">
+
+            <div class="column">
+
+                <div class="column-label">
+                    Previous
+                </div>
+
+                <div class="old-value">
+                    {{ change.oldValue }}
+                </div>
+
+            </div>
+
+            <mat-icon class="change-icon">
+                east
+            </mat-icon>
+
+            <div class="column">
+
+                <div class="column-label">
+                    Current
+                </div>
+
+                <div class="new-value">
+                    {{ change.newValue }}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    }
+
+</div>
+
+}

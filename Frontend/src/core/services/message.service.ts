@@ -30,26 +30,6 @@ export class MessageService {
         );
 
     }
-    //Should remove any and use tutionresponse dto type 
-    getTuitionByTuitionId(tuitionId: string) {
-        return this.http.get<any>(
-            `${environment.apiBaseUrl}${API_ENDPOINTS.GET_TUITION_BY_TUITION_ID}/${encodeURIComponent(tuitionId)}`
-        );
-    }
-    createTuition(request: any) {
-        // CREATE_TUITION
-        return this.http.post<any>(
-            `${environment.apiBaseUrl}${API_ENDPOINTS.CREATE_TUITION}`,
-            request
-        );
 
-    }
-
-    updateTuition(id: string, request: any) {
-        return this.http.put<any>(
-            `${environment.apiBaseUrl}${API_ENDPOINTS.UPDATE_TUITION}/${id}`,
-            request
-        );
-    }
 
 }

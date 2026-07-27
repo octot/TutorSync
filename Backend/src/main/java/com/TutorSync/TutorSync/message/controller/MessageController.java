@@ -24,7 +24,6 @@ public class MessageController {
     ) {
 
         MessageResponse response = messageService.generateMessages(request);
-
         return ResponseEntity.ok(response);
     }
 

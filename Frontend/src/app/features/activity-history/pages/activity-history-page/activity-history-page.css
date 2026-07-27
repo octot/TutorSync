@@ -1,0 +1,261 @@
+.activity-history-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+/* Page Header */
+
+.page-header {
+    margin-bottom: 28px;
+}
+
+.page-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.page-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Search and Filter */
+
+.filter-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.search-field {
+    flex: 1;
+}
+
+.activity-filter {
+    width: 240px;
+}
+
+/*
+  Angular Material form fields reserve some space below
+  for hints/errors. This keeps the filter row aligned.
+*/
+.filter-section mat-form-field {
+    margin-bottom: -20px;
+}
+
+/* Activity Section */
+
+.activity-section h2 {
+    margin: 0 0 16px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Activity Card */
+
+.activity-card {
+    border-radius: 8px;
+}
+
+.activity-card mat-card-content {
+    padding: 20px;
+}
+
+.activity-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.tuition-id {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.activity-card {
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.activity-time {
+    font-size: 13px;
+    color: #777;
+    font-weight: bold;
+}
+
+.activity-type {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-bottom: 12px;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+
+.activity-remarks {
+    margin: 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+.activity-changes {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.change-card {
+    padding: 16px;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    background: #fafafa;
+}
+
+.change-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 16px;
+}
+
+.change-table {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.column {
+    flex: 1;
+}
+
+.column-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: .4px;
+}
+
+.old-value,
+.new-value {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: 8px;
+    display: inline-block;
+    min-width: 90px;
+    text-align: center;
+}
+
+.old-value {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.new-value {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.change-icon {
+    margin: 0 24px;
+    color: #9ca3af;
+}
+
+.changes-heading {
+    margin: 12px 0 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Load More */
+
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.state-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.state-message p {
+    margin: 0 0 16px;
+}
+
+/* Tablet / Mobile */
+
+@media (max-width: 768px) {
+
+    .activity-history-page {
+        padding: 24px 16px;
+    }
+
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+    }
+
+    .search-field,
+    .activity-filter {
+        width: 100%;
+    }
+
+    .activity-card-header {
+        align-items: flex-start;
+    }
+}
+
+/* Small Mobile */
+
+@media (max-width: 480px) {
+
+    .activity-history-page {
+        padding: 20px 12px;
+    }
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+    .activity-card mat-card-content {
+        padding: 16px;
+    }
+
+    .activity-card-header {
+        flex-direction: column;
+        gap: 4px;
+    }
+}

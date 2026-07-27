@@ -1,0 +1,134 @@
+<div class="activity-history-page">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Activity History</h1>
+    <p>View recent tuition activity and track changes.</p>
+  </div>
+
+  <!-- Search and Filter -->
+  <div class="filter-section">
+
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search by Tuition ID</mat-label>
+
+      <mat-icon matPrefix>search</mat-icon>
+
+      <input matInput placeholder="e.g. TUT-1001">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="activity-filter">
+      <mat-label>Activity Type</mat-label>
+
+      <mat-select [value]="selectedActivityType" (selectionChange)="onActivityTypeChange($event.value)">
+
+        <mat-option [value]="undefined">
+          All Activities
+        </mat-option>
+
+        @for (type of activityTypes; track type) {
+        <mat-option [value]="type">
+          {{ type }}
+        </mat-option>
+        }
+
+      </mat-select>
+
+
+    </mat-form-field>
+
+  </div>
+
+  <!-- Recent Activity -->
+  <div class="activity-section">
+
+    <h2>Recent Activity</h2>
+    <!-- Initial Loading -->
+    @if (isLoading && activities.length === 0) {
+
+    <div class="state-message">
+      <p>Loading activities...</p>
+    </div>
+
+    }
+    <!-- Error -->
+    @else if (errorMessage && activities.length === 0) {
+
+    <div class="state-message">
+      <p>{{ errorMessage }}</p>
+      <button mat-stroked-button (click)="retry()">
+        Retry
+      </button>
+    </div>
+
+    }
+    <!-- Empty -->
+    @else if (!isLoading && activities.length === 0) {
+
+    <div class="state-message">
+      <p>No activity records found.</p>
+    </div>
+
+    }
+    <!-- Activities -->
+    @else {
+    <div class="activity-list">
+
+      @for (activity of activities; track activity.id) {
+
+      <mat-card class="activity-card" [routerLink]="['/activity-history', activity.tuitionId]">
+
+        <mat-card-content>
+
+          <div class="activity-card-header">
+
+            <span class="tuition-id">
+              {{ activity.tuitionId }}
+            </span>
+
+            <span class="activity-time">
+              {{ activity.performedAt | date:'medium' }}
+            </span>
+
+          </div>
+
+          <div class="activity-type">
+            {{ activity.activityType }}
+          </div>
+
+          <!-- Activity tracker -->
+
+          @if (activity.activityType === 'UPDATED' && activity.fieldChanges.length > 0) {
+
+          <app-activity-change-list [fieldChanges]="activity.fieldChanges">
+          </app-activity-change-list>
+
+          }
+
+          @else {
+
+          <p class="activity-remarks">
+            {{ activity.remarks }}
+          </p>
+
+          }
+        </mat-card-content>
+
+      </mat-card>
+
+      }
+
+    </div>
+    }
+
+    @if (!isLastPage) {
+    <div class="load-more-container">
+      <button mat-stroked-button (click)="loadMore()">
+        {{ isLoading ? 'Loading...' : 'Load More' }}
+      </button>
+    </div>
+    }
+
+  </div>
+
+</div>

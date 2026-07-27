@@ -8,25 +8,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateTuitionRequest {
+public class CreateTuitionRequest extends TuitionRequest {
     @NotBlank(message = "Tuition ID is required")
     private String tuitionId;
 
-    @NotBlank(message = "Tutor name is required")
-    private String tutorName;
-
-    @NotBlank(message = "Tutor number is required")
-    private String tutorNumber;
-
-    private String parentName;
-
-    @NotBlank(message = "Parent number is required")
-    private String parentNumber;
-
-    private Schedule schedule;
-    private String paymentFromParent;
-    private String paymentToTutor;
-    private String additionalMessageToTutor;
-    private String additionalMessageToParent;
 
 }

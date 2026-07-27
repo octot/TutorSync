@@ -1,0 +1,119 @@
+<div class="tuition-history-page">
+
+    <a class="back-link" routerLink="/activity-history">
+
+        <mat-icon>arrow_back</mat-icon>
+
+        <span>Back to Activity History</span>
+
+    </a>
+
+    <div class="page-header">
+
+        <h1>Tuition History</h1>
+    </div>
+    <div class="timeline-section">
+
+        <h2>Latest Activity</h2>
+
+        @if (isLoading && activities.length === 0) {
+
+        <div class="state-message">
+            Loading tuition history...
+        </div>
+
+        } @else if (errorMessage && activities.length === 0) {
+
+        <div class="state-message">
+            <p>{{ errorMessage }}</p>
+
+            <button mat-stroked-button (click)="loadActivities()">
+                Retry
+            </button>
+        </div>
+
+        } @else if (!isLoading && activities.length === 0) {
+
+        <div class="state-message">
+            No activity history found for this tuition.
+        </div>
+
+        } @else {
+
+        <div class="timeline">
+
+            @for (activity of activities; track activity.id) {
+
+            <div class="timeline-item">
+
+                <div class="timeline-marker">
+                    <div class="timeline-dot" [class.created]="activity.activityType === 'CREATED'"
+                        [class.updated]="activity.activityType === 'UPDATED'"
+                        [class.message-sent]="activity.activityType === 'MESSAGE_SENT'"
+                        [class.message-failed]="activity.activityType === 'MESSAGE_SEND_FAILED'">
+                    </div>
+
+                    @if (!$last) {
+                    <div class="timeline-line"></div>
+                    }
+                </div>
+
+                <div class="timeline-content">
+
+                    <div class="timeline-header">
+
+                        <span class="activity-type" [class.created]="activity.activityType === 'CREATED'"
+                            [class.updated]="activity.activityType === 'UPDATED'"
+                            [class.message-sent]="activity.activityType === 'MESSAGE_SENT'"
+                            [class.message-failed]="activity.activityType === 'MESSAGE_SEND_FAILED'">
+
+                            {{ activity.activityType }}
+
+                        </span>
+
+                        <span class="activity-time">
+                            {{ activity.performedAt | date:'medium' }}
+                        </span>
+
+                    </div>
+
+                    @if (activity.activityType === 'UPDATED' && activity.fieldChanges.length > 0) {
+                        
+                    <app-activity-change-list [fieldChanges]="activity.fieldChanges">
+                    </app-activity-change-list>
+
+                    } @else {
+
+                    <p class="activity-remarks">
+                        {{ activity.remarks }}
+                    </p>
+
+                    }
+
+                </div>
+
+            </div>
+
+            }
+
+        </div>
+
+        @if (!isLastPage) {
+
+        <div class="load-more-container">
+
+            <button mat-stroked-button [disabled]="isLoading" (click)="loadMore()">
+
+                {{ isLoading ? 'Loading...' : 'Load Older Activity' }}
+
+            </button>
+
+        </div>
+
+        }
+
+        }
+
+    </div>
+
+</div>

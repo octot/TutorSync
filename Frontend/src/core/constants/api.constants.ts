@@ -12,7 +12,11 @@ export const API_ENDPOINTS = {
     CREATE_TUITION:
         '/api/tuitions',
 
-    UPDATE_TUITION: '/api/tuitions'
+    UPDATE_TUITION: '/api/tuitions',
+
+    SUBMIT_TUITION: '/api/tuition-submissions',
+
+    TUITION_ACTIVITIES: '/api/tuition-activities'
 
 
 };

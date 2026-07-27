@@ -11,5 +11,6 @@ public interface TuitionRecordRepository extends JpaRepository<TuitionRecord, UU
     Optional<TuitionRecord> findByTuitionId(String tuitionId);
 
     boolean existsByTuitionId(String tuitionId);
+
 }
 

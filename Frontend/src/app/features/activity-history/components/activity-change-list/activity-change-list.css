@@ -1,0 +1,73 @@
+.changes-heading {
+    margin: 12px 0 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.activity-changes {
+    display: flex;
+    flex-direction: column;
+}
+
+.change-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #ececec;
+}
+
+.change-item:last-child {
+    border-bottom: none;
+}
+
+.change-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 14px;
+}
+
+.change-table {
+    display: flex;
+    align-items: center;
+}
+
+.column {
+    flex: 1;
+}
+
+.column-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: .5px;
+}
+
+.old-value,
+.new-value {
+    display: inline-block;
+    min-width: 90px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.old-value {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.new-value {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.change-icon {
+    margin: 0 24px;
+    color: #9ca3af;
+}
