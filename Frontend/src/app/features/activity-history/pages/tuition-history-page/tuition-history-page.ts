@@ -7,6 +7,7 @@ import { finalize } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { DatePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { signal } from '@angular/core';
 import { ActivityChangeList } from './../../../../features/activity-history/components/activity-change-list/activity-change-list'
 @Component({
   selector: 'app-tuition-history-page',
@@ -17,20 +18,17 @@ import { ActivityChangeList } from './../../../../features/activity-history/comp
 export class TuitionHistoryPage implements OnInit {
 
   tuitionId = '';
-
-  activities: TuitionActivity[] = [];
-
   currentPage = PAGINATION.DEFAULT_PAGE;
   readonly pageSize = PAGINATION.DEFAULT_PAGE_SIZE;
 
-  isLastPage = false;
-  isLoading = false;
-  errorMessage = '';
+  activities = signal<TuitionActivity[]>([]);
+  isLastPage = signal(false);
+  isLoading = signal(false);
+  errorMessage = signal('');
 
   constructor(
     private route: ActivatedRoute,
-    private tuitionActivityService: TuitionActivityService,
-    private cdr: ChangeDetectorRef
+    private tuitionActivityService: TuitionActivityService
   ) { }
 
   ngOnInit(): void {
@@ -44,12 +42,12 @@ export class TuitionHistoryPage implements OnInit {
     }
   }
   loadActivities(): void {
-    if (this.isLoading) {
+    if (this.isLoading()) {
       return;
     }
 
-    this.isLoading = true;
-    this.errorMessage = '';
+    this.isLoading.set(true);
+    this.errorMessage.set('');
 
     this.tuitionActivityService
       .getActivitiesByTuitionId(
@@ -59,33 +57,30 @@ export class TuitionHistoryPage implements OnInit {
       )
       .pipe(
         finalize(() => {
-          this.isLoading = false;
-          this.cdr.detectChanges();
+          this.isLoading.set(false);
         })
       )
       .subscribe({
         next: (response) => {
-          this.activities = [
-            ...this.activities,
+          this.activities.update(current => [
+            ...current,
             ...response.content
-          ];
+          ]);
 
-          this.isLastPage = response.last;
+          this.isLastPage.set(response.last);
         },
 
         error: (error) => {
-          this.errorMessage =
-            'Unable to load tuition history. Please try again.';
-
-          console.error(
-            'Failed to load tuition history',
-            error
+          this.errorMessage.set(
+            'Unable to load tuition history. Please try again.'
           );
+
+          console.error(error);
         }
       });
   }
   loadMore(): void {
-    if (this.isLastPage || this.isLoading) {
+    if (this.isLastPage() || this.isLoading()) {
       return;
     }
 

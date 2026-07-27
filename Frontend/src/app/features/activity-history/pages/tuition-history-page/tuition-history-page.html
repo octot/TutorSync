@@ -16,23 +16,23 @@
 
         <h2>Latest Activity</h2>
 
-        @if (isLoading && activities.length === 0) {
+        @if (isLoading() && activities().length === 0) {
 
         <div class="state-message">
             Loading tuition history...
         </div>
 
-        } @else if (errorMessage && activities.length === 0) {
+        } @else if (errorMessage() && activities().length === 0) {
 
         <div class="state-message">
-            <p>{{ errorMessage }}</p>
+            <p>{{ errorMessage() }}</p>
 
             <button mat-stroked-button (click)="loadActivities()">
                 Retry
             </button>
         </div>
 
-        } @else if (!isLoading && activities.length === 0) {
+        } @else if (!isLoading() && activities().length === 0) {
 
         <div class="state-message">
             No activity history found for this tuition.
@@ -42,7 +42,7 @@
 
         <div class="timeline">
 
-            @for (activity of activities; track activity.id) {
+            @for (activity of activities(); track activity.id) {
 
             <div class="timeline-item">
 
@@ -98,13 +98,13 @@
 
         </div>
 
-        @if (!isLastPage) {
+        @if (!isLastPage()) {
 
         <div class="load-more-container">
 
-            <button mat-stroked-button [disabled]="isLoading" (click)="loadMore()">
+            <button mat-stroked-button [disabled]="isLoading()" (click)="loadMore()">
 
-                {{ isLoading ? 'Loading...' : 'Load Older Activity' }}
+                {{ isLoading() ? 'Loading...' : 'Load Older Activity' }}
 
             </button>
 

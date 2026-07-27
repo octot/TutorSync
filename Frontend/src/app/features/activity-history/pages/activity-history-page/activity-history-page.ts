@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {
   TuitionActivity,
   TuitionActivityType
@@ -15,6 +15,7 @@ import { TuitionActivityService } from '../../services/tuition-activity.service'
 import { ActivityChangeList } from './../../../../features/activity-history/components/activity-change-list/activity-change-list'
 import { finalize } from 'rxjs/operators';
 import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-activity-history-page',
   imports: [
@@ -37,18 +38,17 @@ export class ActivityHistoryPage implements OnInit {
     'MESSAGE_SENT',
     'MESSAGE_SEND_FAILED'
   ];
-
-  activities: TuitionActivity[] = [];
   currentPage = PAGINATION.DEFAULT_PAGE;
   readonly pageSize = PAGINATION.DEFAULT_PAGE_SIZE;
-  isLastPage = false;
-  isLoading = false;
-  errorMessage = '';
+
+  activities = signal<TuitionActivity[]>([]);
+  isLastPage = signal(false);
+  isLoading = signal(false);
+  errorMessage = signal('');
   selectedActivityType?: TuitionActivityType;
   constructor(
-    private tuitionActivityService: TuitionActivityService,
+    private tuitionActivityService: TuitionActivityService
     //TODO temporary changes need fix for scalablity
-    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -56,11 +56,11 @@ export class ActivityHistoryPage implements OnInit {
   }
 
   loadActivities(): void {
-    if (this.isLoading) {
+    if (this.isLoading()) {
       return;
     }
-    this.isLoading = true;
-    this.errorMessage = '';
+    this.isLoading.set(true);
+    this.errorMessage.set('');
     this.tuitionActivityService
       .getRecentActivities(
         this.currentPage,
@@ -69,21 +69,26 @@ export class ActivityHistoryPage implements OnInit {
       )
       .pipe( //act as finally block in ts
         finalize(() => {
-          this.isLoading = false;
-          this.cdr.detectChanges();
+          this.isLoading.set(false);
         })
       )
       .subscribe({
         next: (response) => {
-          this.activities = [
-            ...this.activities,
+
+
+          this.activities.update(current => [
+            ...current,
             ...response.content
-          ];
-          this.isLastPage = response.last;
+          ]);
+
+          this.isLastPage.set(response.last);
+
+
         },
         error: (error) => {
-          this.errorMessage =
-            'Unable to load activities. Please try again.';
+          this.errorMessage.set(
+            'Unable to load activities. Please try again.'
+          );
           console.error(
             'Failed to load tuition activities',
             error
@@ -92,7 +97,7 @@ export class ActivityHistoryPage implements OnInit {
       });
   }
   loadMore(): void {
-    if (this.isLastPage) {
+    if (this.isLastPage() || this.isLoading()) {
       return;
     }
 
@@ -109,9 +114,9 @@ export class ActivityHistoryPage implements OnInit {
     this.selectedActivityType = activityType;
 
     this.currentPage = PAGINATION.DEFAULT_PAGE;
-    this.activities = [];
-    this.isLastPage = false;
-    this.errorMessage = '';
+    this.activities.set([]);
+    this.isLastPage.set(false);
+    this.errorMessage.set('');
 
     this.loadActivities();
   }

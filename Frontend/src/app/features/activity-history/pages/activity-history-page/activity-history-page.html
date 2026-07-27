@@ -44,7 +44,7 @@
 
     <h2>Recent Activity</h2>
     <!-- Initial Loading -->
-    @if (isLoading && activities.length === 0) {
+    @if (isLoading() && activities().length === 0) {
 
     <div class="state-message">
       <p>Loading activities...</p>
@@ -52,10 +52,10 @@
 
     }
     <!-- Error -->
-    @else if (errorMessage && activities.length === 0) {
+    @else if (errorMessage() && activities().length === 0) {
 
     <div class="state-message">
-      <p>{{ errorMessage }}</p>
+      <p>{{ errorMessage() }}</p>
       <button mat-stroked-button (click)="retry()">
         Retry
       </button>
@@ -63,7 +63,7 @@
 
     }
     <!-- Empty -->
-    @else if (!isLoading && activities.length === 0) {
+    @else if (!isLoading() && activities().length === 0) {
 
     <div class="state-message">
       <p>No activity records found.</p>
@@ -74,7 +74,7 @@
     @else {
     <div class="activity-list">
 
-      @for (activity of activities; track activity.id) {
+      @for (activity of activities(); track activity.id) {
 
       <mat-card class="activity-card" [routerLink]="['/activity-history', activity.tuitionId]">
 
@@ -121,10 +121,10 @@
     </div>
     }
 
-    @if (!isLastPage) {
+    @if (!isLastPage()) {
     <div class="load-more-container">
       <button mat-stroked-button (click)="loadMore()">
-        {{ isLoading ? 'Loading...' : 'Load More' }}
+        {{ isLoading() ? 'Loading...' : 'Load More' }}
       </button>
     </div>
     }
