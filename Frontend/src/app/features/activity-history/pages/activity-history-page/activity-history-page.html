@@ -9,13 +9,17 @@
   <!-- Search and Filter -->
   <div class="filter-section">
 
-    <mat-form-field appearance="outline" class="search-field">
-      <mat-label>Search by Tuition ID</mat-label>
+<mat-form-field appearance="outline" class="search-field">
+  <mat-label>Search by Tuition ID</mat-label>
 
-      <mat-icon matPrefix>search</mat-icon>
+  <mat-icon matPrefix>search</mat-icon>
 
-      <input matInput placeholder="e.g. TUT-1001">
-    </mat-form-field>
+  <input
+    matInput
+    placeholder="e.g. TUT-1001"
+    [(ngModel)]="searchTuitionId"
+    (keyup.enter)="searchByTuitionId()">
+</mat-form-field>
 
     <mat-form-field appearance="outline" class="activity-filter">
       <mat-label>Activity Type</mat-label>

@@ -4,10 +4,8 @@
         <div class="sidenav-header">
             <h2>TutorSync</h2>
         </div>
-
         <nav class="sidenav-nav">
-            
-            <button mat-button class="nav-item"   routerLink="/" (click)="sidenav.close()">
+            <button mat-button class="nav-item" routerLink="/" (click)="sidenav.close()">
 
                 <mat-icon>description</mat-icon>
 
@@ -20,6 +18,13 @@
                 <span>Activity History</span>
 
             </button>
+            <button mat-button class="nav-item" routerLink="/schedule" (click)="sidenav.close()">
+
+                <mat-icon>schedule</mat-icon>
+                <span>Schedule</span>
+
+            </button>
+
         </nav>
 
     </mat-sidenav>

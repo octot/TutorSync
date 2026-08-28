@@ -15,7 +15,8 @@ import { TuitionActivityService } from '../../services/tuition-activity.service'
 import { ActivityChangeList } from './../../../../features/activity-history/components/activity-change-list/activity-change-list'
 import { finalize } from 'rxjs/operators';
 import { RouterLink } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-activity-history-page',
   imports: [
@@ -27,7 +28,8 @@ import { RouterLink } from '@angular/router';
     MatCardModule,
     MatButtonModule,
     RouterLink,
-    ActivityChangeList],
+    ActivityChangeList,
+    FormsModule],
   templateUrl: './activity-history-page.html',
   styleUrl: './activity-history-page.css',
 })
@@ -47,9 +49,22 @@ export class ActivityHistoryPage implements OnInit {
   errorMessage = signal('');
   selectedActivityType?: TuitionActivityType;
   constructor(
-    private tuitionActivityService: TuitionActivityService
-    //TODO temporary changes need fix for scalablity
+    private tuitionActivityService: TuitionActivityService,
+    private router: Router
   ) { }
+  searchTuitionId = '';
+
+
+
+  searchByTuitionId(): void {
+    const tuitionId = this.searchTuitionId.trim();
+
+    if (!tuitionId) {
+      return;
+    }
+
+    this.router.navigate(['/activity-history', tuitionId]);
+  }
 
   ngOnInit(): void {
     this.loadActivities();

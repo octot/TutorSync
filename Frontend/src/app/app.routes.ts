@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { GenerateMessagePage } from './features/message-generator/pages/generate-message-page/generate-message-page';
 import { ActivityHistoryPage } from './features/activity-history/pages/activity-history-page/activity-history-page';
 import { TuitionHistoryPage } from './features/activity-history/pages/tuition-history-page/tuition-history-page';
+import { ScheduleComponent } from './features/schedule/components/schedule.component';
 export const routes: Routes = [
     {
         path: '',
@@ -14,5 +15,9 @@ export const routes: Routes = [
     {
         path: 'activity-history/:tuitionId',
         component: TuitionHistoryPage
+    },
+    {
+        path: 'schedule',
+        component: ScheduleComponent
     }
 ];

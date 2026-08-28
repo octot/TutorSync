@@ -1,0 +1,26 @@
+<h2>Create Schedule</h2>
+
+<form (ngSubmit)="createSchedule()">
+
+  <label>Demo Date</label><br>
+  <input type="date" [(ngModel)]="demoDate" name="demoDate" required><br><br>
+
+  <label>
+    <input type="checkbox" [(ngModel)]="sendReminder" name="sendReminder">
+    Send Reminder
+  </label>
+
+  <div *ngIf="sendReminder">
+    <label>
+      <input type="checkbox" [(ngModel)]="tutor" name="tutor"> Tutor
+    </label>
+
+    <label>
+      <input type="checkbox" [(ngModel)]="parent" name="parent"> Parent
+    </label>
+  </div>
+
+  <br>
+  <button type="submit">Create</button>
+
+</form>
