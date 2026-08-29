@@ -53,6 +53,7 @@ public class ScheduleService {
             execution.setStatus(ExecutionStatus.SCHEDULED);
             execution.setRetryCount(0);
             execution.setCreatedAt(LocalDateTime.now());
+            execution.setScheduledTime(scheduledTime);
 
             executions.add(execution);
         }

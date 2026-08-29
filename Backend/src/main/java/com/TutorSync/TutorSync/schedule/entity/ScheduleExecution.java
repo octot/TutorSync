@@ -25,6 +25,7 @@ public class ScheduleExecution {
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private LocalDateTime scheduledTime;
 
     // --- Constructors ---
     public ScheduleExecution() {
@@ -100,4 +101,7 @@ public class ScheduleExecution {
         this.updatedAt = updatedAt;
     }
 
+    public void setScheduledTime(LocalDateTime scheduledTime) {
+        this.scheduledTime = scheduledTime;
+    }
 }
