@@ -1,9 +1,6 @@
 package com.TutorSync.TutorSync.message.service;
 
-import com.TutorSync.TutorSync.message.dto.GeneratedMessage;
-import com.TutorSync.TutorSync.message.dto.MessageRequest;
-import com.TutorSync.TutorSync.message.dto.MessageResponse;
-import com.TutorSync.TutorSync.message.dto.SendMessageRequest;
+import com.TutorSync.TutorSync.message.dto.*;
 import com.TutorSync.TutorSync.message.generator.ParentMessageGenerator;
 import com.TutorSync.TutorSync.message.generator.TutorMessageGenerator;
 import lombok.RequiredArgsConstructor;
@@ -36,12 +33,23 @@ public class MessageService {
 
         MessageResponse response = new MessageResponse();
         response.setMessages(messages);
-
         return response;
     }
 
     public void sendToAdmin(SendMessageRequest request) {
         whatsappService.sendToAdmin(request.getMessages());
     }
+
+    public GeneratedMessage generateForRecipient(
+            MessageRequest request,
+            RecipientType recipientType
+    ) {
+        if (recipientType == RecipientType.TUTOR) {
+            return tutorMessageTemplate.generate(request);
+        } else {
+            return parentMessageTemplate.generate(request);
+        }
+    }
+
 
 }

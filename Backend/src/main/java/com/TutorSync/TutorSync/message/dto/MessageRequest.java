@@ -3,6 +3,8 @@ package com.TutorSync.TutorSync.message.dto;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class MessageRequest {
 
@@ -21,5 +23,8 @@ public class MessageRequest {
 
     private String additionalMessageToTutor;
     private String additionalMessageToParent;
+
+    private LocalDateTime demoDateTime;
+
 
 }
